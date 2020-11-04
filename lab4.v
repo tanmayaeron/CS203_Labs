@@ -4,8 +4,8 @@ module mux4(out,in,c1,c0);
 	output out;
 	wire c0neg,c1neg;
   	assign c0neg=~c0;
-    assign c1neg=~c1;
-    assign out = (c0neg&c1neg&in[0]) | (c0&c1neg&in[1]) | (c0neg&c1&in[2]) | (c0&c1&in[3]);
+        assign c1neg=~c1;
+        assign out = (c0neg&c1neg&in[0]) | (c0&c1neg&in[1]) | (c0neg&c1&in[2]) | (c0&c1&in[3]);
 endmodule
 
 module flipflop(q,qneg,d,clock);
@@ -29,7 +29,7 @@ module logic_tile(out,clock,in1,in2,in3,in4,in5);
 	generate for(i=0;i<=7;i=i+1)
 	    begin: level1mux
 			mux4 m1(temp[i],mem[4*i+3:4*i],in2,in1);
-		end
+            end
 	endgenerate
 	mux4 m2(temp[8],temp[3:0],in4,in3);
 	mux4 m3(temp[9],temp[7:4],in4,in3);
